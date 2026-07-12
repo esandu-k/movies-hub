@@ -539,6 +539,26 @@ body {
     .category-grid {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
+    
+    /* Mobile Details Modal */
+    .details-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+    .details-hero {
+        height: 250px;
+    }
+    .details-hero-content h2 {
+        font-size: 1.8rem;
+    }
+    .details-layout {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+    .details-right {
+        width: 100%;
+    }
 }
 @media (min-width: 769px) {
     .menu-btn {
