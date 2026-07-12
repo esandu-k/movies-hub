@@ -349,10 +349,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.45);
     margin-bottom: 25px;
     font-weight: 300;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
 }
 .hero-buttons { display: flex; gap: 15px; }
 .hero-buttons .btn-primary { background-color: #fff; color: #000; }
