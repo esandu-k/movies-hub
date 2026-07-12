@@ -1,4 +1,4 @@
-import { Flame, Star, Zap, Smile, Ghost, Heart, Film } from 'lucide-react';
+import { Flame, Star, Zap, Smile, Ghost, Heart, Film, X } from 'lucide-react';
 import { endpoints } from '../lib/tmdb';
 
 export const categories = [
@@ -15,15 +15,21 @@ interface Props {
   selectedCategory: string;
   onSelectCategory: (id: string, url: string) => void;
   onGoHome: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export const Sidebar = ({ selectedCategory, onSelectCategory, onGoHome }: Props) => {
+export const Sidebar = ({ selectedCategory, onSelectCategory, onGoHome, isOpen, onClose }: Props) => {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo" onClick={onGoHome} style={{ cursor: 'pointer' }}>
         <span>MOVIE HUB</span>
         <span className="by-kule">by Kule</span>
       </div>
+      
+      <button className="close-sidebar-btn icon-btn" onClick={onClose}>
+        <X size={24} />
+      </button>
       
       <div className="sidebar-nav">
         <h3 className="sidebar-heading">Sort & Filter</h3>

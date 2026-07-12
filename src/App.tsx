@@ -18,6 +18,7 @@ function App() {
   
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
   const [categoryUrl, setCategoryUrl] = useState(categories[0].url);
@@ -74,6 +75,7 @@ function App() {
     setSelectedCategory(id);
     setCategoryUrl(url);
     setIsSearching(false);
+    setIsSidebarOpen(false); // Close sidebar on mobile after selection
   };
 
   const handleGoHome = () => {
@@ -84,10 +86,15 @@ function App() {
 
   return (
     <div className="app-container">
+      {isSidebarOpen && (
+        <div className="sidebar-mobile-overlay" onClick={() => setIsSidebarOpen(false)}></div>
+      )}
       <Sidebar 
         selectedCategory={selectedCategory} 
         onSelectCategory={handleSelectCategory} 
         onGoHome={handleGoHome}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
       />
       
       <div className="main-wrapper">
@@ -98,6 +105,7 @@ function App() {
           onLoginClick={() => setShowAuthModal(true)}
           onSettingsClick={() => setShowSettingsModal(true)}
           onLogoutClick={handleLogout}
+          onMenuClick={() => setIsSidebarOpen(true)}
         />
 
         {isSearching ? (

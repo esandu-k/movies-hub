@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Menu } from 'lucide-react';
 import type { User } from '../types';
 
 interface Props {
@@ -8,10 +8,11 @@ interface Props {
   onLoginClick: () => void;
   onSettingsClick: () => void;
   onLogoutClick: () => void;
+  onMenuClick: () => void;
   isSearching: boolean;
 }
 
-export const Navbar: React.FC<Props> = ({ user, onSearch, onLoginClick, onSettingsClick, onLogoutClick, isSearching }) => {
+export const Navbar: React.FC<Props> = ({ user, onSearch, onLoginClick, onSettingsClick, onLogoutClick, onMenuClick, isSearching }) => {
   const [scrolled, setScrolled] = useState(false);
   const [searchActive, setSearchActive] = useState(isSearching);
   const [query, setQuery] = useState('');
@@ -39,6 +40,9 @@ export const Navbar: React.FC<Props> = ({ user, onSearch, onLoginClick, onSettin
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <button className="menu-btn icon-btn" onClick={onMenuClick}>
+        <Menu size={24} />
+      </button>
       <div className="nav-actions" style={{ marginLeft: 'auto', width: '100%', justifyContent: 'flex-end' }}>
         <div className={`search-box ${searchActive ? 'active' : ''}`}>
           <button className="icon-btn" onClick={() => setSearchActive(!searchActive)}>
